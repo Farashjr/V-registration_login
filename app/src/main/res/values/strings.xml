@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">V-registration_login</string>
+    <string name="login">Login</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="register">Register</string>
+</resources>

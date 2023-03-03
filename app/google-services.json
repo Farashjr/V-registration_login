@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "184637801553",
+    "project_id": "v-bazzer",
+    "storage_bucket": "v-bazzer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184637801553:android:875ec361798afc2e9e6470",
+        "android_client_info": {
+          "package_name": "com.example.v_registration_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184637801553-v3k40spulvcp8v9curvsrl8e8mrlqf2v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqjEqLwce51Mr0rRtVnR6K7D7-Yu3SMQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184637801553-v3k40spulvcp8v9curvsrl8e8mrlqf2v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
