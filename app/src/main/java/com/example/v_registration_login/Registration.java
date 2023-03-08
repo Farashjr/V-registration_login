@@ -45,6 +45,7 @@ public class Registration extends AppCompatActivity {
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_register);
         textView = findViewById(R.id.loginNow);
+        ProgressBar progressBar = findViewById(R.id.progressBar);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,15 +61,17 @@ public class Registration extends AppCompatActivity {
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
                 String email, password;
-                email = String.valueOf(editTextEmail.getText());
-                password = String.valueOf(editTextPassword.getText());
+                email = editTextEmail.getText().toString();
+                password = editTextPassword.getText().toString();
 
-                if (TextUtils.isEmpty(email)) {
+                if (email.isEmpty()) {
                     Toast.makeText(Registration.this, "Enter email", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
-                if (TextUtils.isEmpty(password)) {
+                if (password.isEmpty()) {
                     Toast.makeText(Registration.this, "Enter password", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
                 mAuth.createUserWithEmailAndPassword(email, password)
@@ -77,8 +80,10 @@ public class Registration extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-
                                     Toast.makeText(Registration.this, "Account created successfully.", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
                                     Toast.makeText(Registration.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 }
