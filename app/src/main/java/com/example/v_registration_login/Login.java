@@ -61,18 +61,24 @@ public class Login extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 buttonLogin.setVisibility(View.INVISIBLE);
                 String email, password;
-                email = String.valueOf(editTextEmail.getText());
-                password = String.valueOf(editTextPassword.getText());
+                email = editTextEmail.getText().toString();
+                password = editTextPassword.getText().toString();
 
                 System.out.println(email);
                 System.out.println(password);
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(Login.this, "Enter email", Toast.LENGTH_SHORT).show();
+                if (email.matches("")) {
+                    Toast.makeText(Login.this, "Valid email must be provided", Toast.LENGTH_SHORT).show();
+                    editTextEmail.setError("Cannot be empty");
+                    progressBar.setVisibility(View.INVISIBLE);
+                    buttonLogin.setVisibility(View.VISIBLE);
                     return;
                 }
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(Login.this, "Enter password", Toast.LENGTH_SHORT).show();
+                if (password.matches("")) {
+                    Toast.makeText(Login.this, "Enter a valid password", Toast.LENGTH_SHORT).show();
+                    editTextPassword.setError("Cannot be empty");
+                    progressBar.setVisibility(View.INVISIBLE);
+                    buttonLogin.setVisibility(View.VISIBLE);
                     return;
                 }
 
