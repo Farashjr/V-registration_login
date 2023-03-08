@@ -40,11 +40,12 @@
         android:hint="@string/password"
         android:padding="10dp" />
   </com.google.android.material.textfield.TextInputLayout>
+
   <ProgressBar
       android:id="@+id/progressBar"
-      android:visibility="gone"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+      android:layout_height="wrap_content"
+      android:visibility="gone" />
 
   <Button
       android:id="@+id/btn_register"
@@ -53,5 +54,14 @@
       android:contentDescription="@string/register"
       android:text="@string/register"
       android:textSize="20sp" />
+  <TextView
+      android:textStyle="bold"
+      android:textSize="20sp"
+      android:gravity="center"
+      android:layout_marginTop="20dp"
+      android:id="@+id/loginNow"
+      android:text="@string/click_to_login"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
 
 </LinearLayout>
