@@ -1,0 +1,6 @@
+[
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-12:/layout-w1240dp-v13/activity_login.xml",
+        "source": "com.example.myapplication.app-main-15:/layout-w1240dp/activity_login.xml"
+    }
+]
