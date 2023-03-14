@@ -12,4 +12,6 @@
     <string name="Log_out">Logout</string>
     <string name="signOut">SignOut</string>
     <string name="logOut">logOut</string>
+    <string name="landingPageText">BUY GROCERIES EASILY WITH US</string>
+    <string name="getStarted">Get Started</string>
 </resources>
