@@ -18,10 +18,15 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Registration extends AppCompatActivity {
     TextInputEditText usernameEditText, editTextEmail, addressEditText, phonenumbeEditText, editTextPassword;
     FirebaseAuth mAuth;
+    FirebaseFirestore db;
     Button buttonReg;
     ProgressBar progressBar;
     TextView textView;
@@ -41,6 +46,7 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         usernameEditText = findViewById(R.id.username);
         editTextEmail = findViewById(R.id.email);
         addressEditText = findViewById(R.id.address);
@@ -82,6 +88,14 @@ public class Registration extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
+                                    Map<String, Object> user = new HashMap<>();
+                                    user.put("username", username);
+                                    user.put("email", email);
+                                    user.put("address", address);
+                                    user.put("phonenumber", phonenumber);
+
+                                    db.collection("users").add(user);
+
                                     Toast.makeText(Registration.this, "Account created successfully.", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
