@@ -18,10 +18,15 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Registration extends AppCompatActivity {
-    TextInputEditText editTextEmail, editTextPassword;
+    TextInputEditText usernameEditText, editTextEmail, addressEditText, phonenumbeEditText, editTextPassword;
     FirebaseAuth mAuth;
+    FirebaseFirestore db;
     Button buttonReg;
     ProgressBar progressBar;
     TextView textView;
@@ -41,7 +46,11 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        usernameEditText = findViewById(R.id.username);
         editTextEmail = findViewById(R.id.email);
+        addressEditText = findViewById(R.id.address);
+        phonenumbeEditText = findViewById(R.id.phonenumber);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_register);
         textView = findViewById(R.id.loginNow);
@@ -60,26 +69,33 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-                String email, password;
+                String username, email, address, phonenumber, password;
+                username = usernameEditText.getText().toString();
                 email = editTextEmail.getText().toString();
+                address = addressEditText.getText().toString();
+                phonenumber = phonenumbeEditText.getText().toString();
                 password = editTextPassword.getText().toString();
 
-                if (email.isEmpty()) {
-                    Toast.makeText(Registration.this, "Enter email", Toast.LENGTH_SHORT).show();
+                if (username.isEmpty() || email.isEmpty() || address.isEmpty() || phonenumber.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(Registration.this, "All inputs must be filled", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                     return;
                 }
-                if (password.isEmpty()) {
-                    Toast.makeText(Registration.this, "Enter password", Toast.LENGTH_SHORT).show();
-                    progressBar.setVisibility(View.GONE);
-                    return;
-                }
+
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
+                                    Map<String, Object> user = new HashMap<>();
+                                    user.put("username", username);
+                                    user.put("email", email);
+                                    user.put("address", address);
+                                    user.put("phonenumber", phonenumber);
+
+                                    db.collection("users").add(user);
+
                                     Toast.makeText(Registration.this, "Account created successfully.", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
