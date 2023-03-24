@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Registration extends AppCompatActivity {
-    TextInputEditText editTextEmail, editTextPassword;
+    TextInputEditText usernameEditText, editTextEmail, addressEditText, phonenumbeEditText, editTextPassword;
     FirebaseAuth mAuth;
     Button buttonReg;
     ProgressBar progressBar;
@@ -41,7 +41,10 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         mAuth = FirebaseAuth.getInstance();
+        usernameEditText = findViewById(R.id.username);
         editTextEmail = findViewById(R.id.email);
+        addressEditText = findViewById(R.id.address);
+        phonenumbeEditText = findViewById(R.id.phonenumber);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_register);
         textView = findViewById(R.id.loginNow);
@@ -60,20 +63,19 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-                String email, password;
+                String username, email, address, phonenumber, password;
+                username = usernameEditText.getText().toString();
                 email = editTextEmail.getText().toString();
+                address = addressEditText.getText().toString();
+                phonenumber = phonenumbeEditText.getText().toString();
                 password = editTextPassword.getText().toString();
 
-                if (email.isEmpty()) {
-                    Toast.makeText(Registration.this, "Enter email", Toast.LENGTH_SHORT).show();
+                if (username.isEmpty() || email.isEmpty() || address.isEmpty() || phonenumber.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(Registration.this, "All inputs must be filled", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                     return;
                 }
-                if (password.isEmpty()) {
-                    Toast.makeText(Registration.this, "Enter password", Toast.LENGTH_SHORT).show();
-                    progressBar.setVisibility(View.GONE);
-                    return;
-                }
+
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
