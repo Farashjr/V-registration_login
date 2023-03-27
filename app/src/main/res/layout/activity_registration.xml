@@ -58,10 +58,10 @@
       android:layout_height="wrap_content">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/phonenumber"
+        android:id="@+id/PhoneNumber"
         android:layout_width="350dp"
         android:layout_height="48dp"
-        android:hint="@string/phonenumber"
+        android:hint="@string/PhoneNumber"
         android:padding="10dp" />
   </com.google.android.material.textfield.TextInputLayout>
 

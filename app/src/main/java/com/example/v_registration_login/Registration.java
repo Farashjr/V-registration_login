@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -50,7 +49,7 @@ public class Registration extends AppCompatActivity {
         usernameEditText = findViewById(R.id.username);
         editTextEmail = findViewById(R.id.email);
         addressEditText = findViewById(R.id.address);
-        phonenumbeEditText = findViewById(R.id.phonenumber);
+        phonenumbeEditText = findViewById(R.id.PhoneNumber);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_register);
         textView = findViewById(R.id.loginNow);

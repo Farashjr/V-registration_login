@@ -15,12 +15,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.squareup.picasso.Picasso;
 
-public class ProductSearchActivity extends AppCompatActivity {
-    private EditText searchEditText;
+class ProductSearchActivity extends AppCompatActivity {
     private RecyclerView searchRecyclerView;
     private FirebaseFirestore db;
     private FirestoreRecyclerAdapter<Product, ProductViewHolder> adapter;
@@ -30,7 +32,7 @@ public class ProductSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_search);
 
-        searchEditText = findViewById(R.id.search_edit_text);
+        EditText searchEditText = findViewById(R.id.search_edit_text);
         searchRecyclerView = findViewById(R.id.search_recycler_view);
         searchRecyclerView.setHasFixedSize(true);
         searchRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -68,7 +70,7 @@ public class ProductSearchActivity extends AppCompatActivity {
         adapter = new FirestoreRecyclerAdapter<Product, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model) {
-                holder.setProductDetails(getApplicationContext(), model.getProductName(), model.getProductImage(), model.getProductPrice());
+                holder.setProductDetails(getApplicationContext(), model.getProductName(), model.getProductImage(), String.valueOf(model.getProductPrice()));
             }
 
             @NonNull

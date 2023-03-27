@@ -4,7 +4,7 @@
     <string name="username">username</string>
     <string name="email">email</string>
     <string name="address">address</string>
-    <string name="phonenumber">phonenumber</string>
+    <string name="PhoneNumber">phonenumber</string>
     <string name="password">password</string>
     <string name="register">Register</string>
     <string name="click_to_login">Click to login</string>
@@ -17,4 +17,13 @@
     <string name="logOut">logOut</string>
     <string name="landingPageText">BUY GROCERIES EASILY WITH US</string>
     <string name="getStarted">Get Started</string>
+    <string name="name">Name:name</string>
+    <string name="enter_product_name">Enter product name</string>
+    <string name="description">Description:</string>
+    <string name="enter_product_description">Enter product description</string>
+    <string name="price">Price:</string>
+    <string name="enter_product_price">Enter product price</string>
+    <string name="image">Image:</string>
+    <string name="product_of_image">product of image</string>
+    <string name="add_product">Add Product</string>
 </resources>
