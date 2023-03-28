@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="product_name" type="id" />
-    <item name="product_image" type="id">product_image</item>
-    <item name="product_price" type="id">Product_price</item>
+    <item name="product_image" type="id" />
+    <item name="product_price" type="id" />
 </resources>

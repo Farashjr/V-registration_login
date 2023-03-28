@@ -16,7 +16,7 @@
         android:textSize="16sp"
         tools:ignore="TextFields,VisualLintTextFieldSize"
         android:autofillHints=""
-        android:inputType="TODO" />
+        android:inputType="textAutoComplete" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_recycler_view"
