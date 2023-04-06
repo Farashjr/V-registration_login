@@ -175,10 +175,10 @@ public class AddProductActivity extends AppCompatActivity {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference(String.valueOf(filePathName));
         storageReference.putFile(image_Uri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                         while (!uriTask.isSuccessful());
+                    @Override
                         Uri downloadImageUri = uriTask.getResult();
 
                         if (uriTask.isSuccessful()){

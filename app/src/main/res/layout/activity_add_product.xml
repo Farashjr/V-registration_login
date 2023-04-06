@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".AddProductActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:padding="10dp"
+        android:background="@drawable/ic_rectangle_24">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:autofillHints="previous activity"
+            android:background="@null"
+            android:contentDescription="@string/backBtn"
+            android:src="@drawable/ic_arrow_back_" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/add_product"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/productIconTV"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_add_shopping_cart"
+            app:c_border="true"
+            app:c_border_color="@color/colorPrimaryDark"
+            app:c_border_width="1dp"/>
+
+        <EditText
+            android:id="@+id/tittleEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/productIconTV"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/baseline_rectangle_24"
+            android:drawableStart="@drawable/ic_text_fields_24"
+            android:drawablePadding="10dp"
+            android:hint="Name"
+            android:inputType="textPersonName|textCapWords"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColorHint="@color/cardview_dark_background"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/descriptionEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tittleEt"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/baseline_rectangle_24"
+            android:drawableStart="@drawable/ic_text_fields_24"
+            android:drawablePadding="10dp"
+            android:hint="Description"
+            android:inputType="textPersonName|textCapWords"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColorHint="@color/cardview_dark_background" />
+
+        <EditText
+            android:id="@+id/categoryEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descriptionEt"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/baseline_rectangle_24"
+            android:drawableStart="@drawable/baseline_category_24"
+            android:drawableEnd="@drawable/baseline_arrow_down_"
+            android:drawablePadding="10dp"
+            android:hint="category"
+            android:inputType="textPersonName|textCapWords"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColorHint="@color/cardview_dark_background" />
+
+
+        <EditText
+            android:id="@+id/quantityEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/categoryEt"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/baseline_rectangle_24"
+            android:drawableStart="@drawable/baseline_shopping_cart_24"
+            android:drawablePadding="10dp"
+            android:hint="Quantity e.g Kg,litre"
+            android:inputType="textCapWords"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColorHint="@color/cardview_dark_background" />
+
+        <EditText
+            android:id="@+id/priceEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quantityEt"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/baseline_rectangle_24"
+            android:drawableStart="@drawable/baseline_attach_money_24"
+            android:drawablePadding="10dp"
+            android:hint="Price"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColorHint="@color/cardview_dark_background" />
+
+        <Button
+            android:id="@+id/addProductBtn"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priceEt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@color/teal_200"
+            android:minWidth="150dp"
+            android:text="@string/Add_product"
+            android:textColor="#546E7A"
+            android:textSize="25dp" />
+    </RelativeLayout>
+
+</LinearLayout>
