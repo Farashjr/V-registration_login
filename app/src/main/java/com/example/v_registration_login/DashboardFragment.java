@@ -1,5 +1,7 @@
 package com.example.v_registration_login;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +28,9 @@ public class DashboardFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Button addProduct;
+    Button viewCart;
+    Button logout;
 
     public DashboardFragment() {
         // Required empty public constructor
@@ -59,6 +67,35 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+
+        addProduct = view.findViewById(R.id.add_product_btn);
+        viewCart = view.findViewById(R.id.view_cart_btn);
+        logout = view.findViewById(R.id.logout_btn);
+
+        addProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddProductActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                ProgressDialog progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setMessage("Logging out....");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 }

@@ -4,7 +4,7 @@
     <item android:title="Home"
         android:icon="@drawable/baseline_home_24"
         android:id="@+id/home"/>
-    <item android:title="Hambuger"
+    <item android:title="Dashboard"
         android:icon="@drawable/baseline_dashboard_24"
         android:id="@+id/dashboard"/>
     <item android:title="Chat"
