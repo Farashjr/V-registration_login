@@ -22,6 +22,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -119,7 +121,12 @@ public class AddProductActivity extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
                         String imageUrl = uri.toString();
 
-                        Product product = new Product(name, description, price, imageUrl);
+                        //Product product = new Product(name, description, price, imageUrl);
+                        Map<String, Object> product = new HashMap<>();
+                        product.put("name", name);
+                        product.put("image", imageUrl);
+                        product.put("description", description);
+                        product.put("price", price);
 
                         db.collection("Products")
                                 .add(product)

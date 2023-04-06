@@ -101,10 +101,11 @@
         android:layout_below="@+id/product_image_view"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:background="#2196F3"
+        android:backgroundTint="@color/primary_color"
         android:minHeight="48dp"
         android:text="@string/add_product"
-        android:textColor="#212121"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
         tools:ignore="TouchTargetSizeCheck" />
 
 </RelativeLayout>
