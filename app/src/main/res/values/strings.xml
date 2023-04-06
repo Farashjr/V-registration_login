@@ -17,7 +17,7 @@
     <string name="logOut">logOut</string>
     <string name="landingPageText">BUY GROCERIES EASILY WITH US</string>
     <string name="getStarted">Get Started</string>
-    <string name="name">Name:name</string>
+    <string name="name">Name:</string>
     <string name="enter_product_name">Enter product name</string>
     <string name="description">Description:</string>
     <string name="enter_product_description">Enter product description</string>
