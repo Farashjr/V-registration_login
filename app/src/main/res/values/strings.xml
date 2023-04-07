@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">V-registration_login</string>
+    <string name="app_name">V-Bazzer</string>
     <string name="login">Login</string>
     <string name="username">username</string>
     <string name="email">email</string>
@@ -28,4 +28,13 @@
     <string name="add_product">Add Product</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Add_product">Add_product</string>
+    <string name="backBtn">backBtn</string>
+    <string name="logoutBtn">logoutBtn</string>
+    <string name="addProductBtn">addProductBtn</string>
+    <string name="Name">Name</string>
+    <string name="Namee">Namee</string>
+    <string name="namee">NAME</string>
+    <string name="shop_name">shop_name</string>
+    <string name="Email">Email</string>
 </resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainSellerActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="23sp"
+        android:background="@drawable/baseline_rectangle_24"
+        android:padding="10dp" />
+
+    <ImageButton
+        android:id="@+id/logoutBtn"
+        android:layout_width="32dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:background="@null"
+        android:contentDescription="@string/logoutBtn"
+        android:src="@drawable/baseline_logout_24"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <ImageButton
+        android:id="@+id/editProfileBtn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_toStartOf="@id/logoutBtn"
+        android:background="@null"
+        android:contentDescription="@string/logoutBtn"
+        android:src="@drawable/ic_mode_edit_24" />
+
+    <ImageButton
+        android:id="@+id/addProductBtn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_toStartOf="@id/editProfileBtn"
+        android:background="@null"
+        android:contentDescription="@string/addProductBtn"
+        android:src="@drawable/ic_shopping_cart_24" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/profileTv"
+        android:layout_marginEnd="16dp"
+        app:c_border="true"
+        app:c_border_color="@color/colorWhite"
+        android:src="@drawable/ic_person_26"/>
+
+    <TextView
+        android:id="@+id/nameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/namee"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@id/profileTv"
+        tools:ignore="RelativeOverlap" />
+    <TextView
+        android:id="@+id/shopNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shop_name"
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/profileTv"
+        android:layout_below="@id/nameTv"/>
+    <TextView
+        android:id="@+id/emailTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Email"
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/profileTv"
+        android:layout_below="@id/shopNameTv"/>
+</RelativeLayout>
