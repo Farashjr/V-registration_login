@@ -49,14 +49,11 @@ public class AddProductActivity extends AppCompatActivity {
     private Button addProductBtn;
     private ImageView productIconTv;
 
-    private FirebaseAuth db;
+    private FirebaseFirestore db;
+    private FirebaseAuth auth;
     private ProgressDialog progressDialog;
     private static final int CAMERA_REQUEST_CODE = 200;
-    private static final int STORAGE_REQUEST_CODE;
-
-    static {
-        STORAGE_REQUEST_CODE = 300;
-    }
+    private static final int STORAGE_REQUEST_CODE = 300;
 
     private static final int IMAGE_PICK_GALLERY_CODE = 400;
     private static final int IMAGE_PICK_CAMERA_CODE = 500;
@@ -79,13 +76,14 @@ public class AddProductActivity extends AppCompatActivity {
         addProductBtn = findViewById(R.id.addProductBtn);
         // productImageView = findViewById(R.id.product_image_view);
         db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please wait....");
         progressDialog.setCanceledOnTouchOutside(false);
 
-        cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        cameraPermissions = new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        cameraPermissions = new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        cameraPermissions = new String[]{ android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,10 +151,10 @@ public class AddProductActivity extends AppCompatActivity {
             hashMap.put("productIcon", "");
             hashMap.put("productPrice", ""+productPrice);
             hashMap.put("timestamp", ""+timestamp);
-            hashMap.put("uid", ""+db.getUid());
+            hashMap.put("uid", ""+auth.getUid());
 
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-            reference.child(db.getUid()).child("Products").child(timestamp).setValue(hashMap)
+            reference.child(auth.getUid()).child("Products").child(timestamp).setValue(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>(){
                         @Override
                         public void onSuccess(Void aVoid){
@@ -181,7 +179,7 @@ public class AddProductActivity extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uriTask.isSuccessful());
-                            @Override
+
                             Uri downloadImageUri = uriTask.getResult();
 
                             if (uriTask.isSuccessful()){
@@ -194,10 +192,10 @@ public class AddProductActivity extends AppCompatActivity {
                                 hashMap.put("productIcon", ""+downloadImageUri);
                                 hashMap.put("productPrice", ""+productPrice);
                                 hashMap.put("timestamp", ""+timestamp);
-                                hashMap.put("uid", ""+db.getUid());
+                                hashMap.put("uid", ""+auth.getUid());
 
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-                                reference.child(db.getUid()).child("Products").child(timestamp).setValue(hashMap)
+                                reference.child(auth.getUid()).child("Products").child(timestamp).setValue(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>(){
                                             @Override
                                             public void onSuccess(Void aVoid){
@@ -287,7 +285,7 @@ public class AddProductActivity extends AppCompatActivity {
 
     }
     private boolean checkStoragePermission(){
-        boolean result = ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+        boolean result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)==
                 (PackageManager.PERMISSION_GRANTED);
         return result;
     }
@@ -295,10 +293,10 @@ public class AddProductActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, storagePermissions, STORAGE_REQUEST_CODE);
     }
     private boolean checkCameraPermission() {
-        boolean result = ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)==
+        boolean result = ContextCompat.checkSelfPermission(this,android.Manifest.permission.CAMERA)==
                 (PackageManager.PERMISSION_GRANTED);
 
-        boolean result1 = ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+        boolean result1 = ContextCompat.checkSelfPermission(this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)==
                 (PackageManager.PERMISSION_GRANTED);
 
         return result && result1;
