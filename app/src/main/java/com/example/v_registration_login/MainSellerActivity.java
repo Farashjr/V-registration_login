@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
-public class MainSellerActivity extends AppCompatActivity {
+class MainSellerActivity extends AppCompatActivity {
 
     private ImageButton logoutBtn, editProfileBtn, addProductBtn;
     private ShapeableImageView profileTv;
@@ -137,11 +137,6 @@ public class MainSellerActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
                 });
