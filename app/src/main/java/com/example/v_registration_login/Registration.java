@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import java.util.Map;
 
 public class Registration extends AppCompatActivity {
     TextInputEditText usernameEditText, editTextEmail, addressEditText, phonenumbeEditText, editTextPassword;
+    CheckBox registerAsSellerCheckBox;
     FirebaseAuth mAuth;
     FirebaseFirestore db;
     Button buttonReg;
@@ -51,6 +53,7 @@ public class Registration extends AppCompatActivity {
         addressEditText = findViewById(R.id.address);
         phonenumbeEditText = findViewById(R.id.PhoneNumber);
         editTextPassword = findViewById(R.id.password);
+        registerAsSellerCheckBox = findViewById(R.id.register_as_seller);
         buttonReg = findViewById(R.id.btn_register);
         textView = findViewById(R.id.loginNow);
         ProgressBar progressBar = findViewById(R.id.progressBar);
@@ -68,12 +71,13 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-                String username, email, address, phonenumber, password;
+                String username, email, address, phonenumber, password, role;
                 username = usernameEditText.getText().toString();
                 email = editTextEmail.getText().toString();
                 address = addressEditText.getText().toString();
                 phonenumber = phonenumbeEditText.getText().toString();
                 password = editTextPassword.getText().toString();
+
 
                 if (username.isEmpty() || email.isEmpty() || address.isEmpty() || phonenumber.isEmpty() || password.isEmpty()) {
                     Toast.makeText(Registration.this, "All inputs must be filled", Toast.LENGTH_SHORT).show();
@@ -86,14 +90,21 @@ public class Registration extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
+                                String role = "user";
+
+                                if(registerAsSellerCheckBox.isChecked()){
+                                    role = "seller";
+                                }
                                 if (task.isSuccessful()) {
+                                    String userId = task.getResult().getUser().getUid();
                                     Map<String, Object> user = new HashMap<>();
                                     user.put("username", username);
                                     user.put("email", email);
                                     user.put("address", address);
                                     user.put("phonenumber", phonenumber);
+                                    user.put("role", role);
 
-                                    db.collection("users").add(user);
+                                    db.collection("users").document(userId).set(user);
 
                                     Toast.makeText(Registration.this, "Account created successfully.", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);

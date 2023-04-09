@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".Registration">
@@ -13,9 +16,17 @@
       android:layout_height="wrap_content"
       android:layout_marginBottom="20sp"
       android:gravity="center"
-      android:text="@string/register"
-      android:textSize="20sp"
+      android:text="Create Account with Email"
+      android:textSize="40sp"
       android:textStyle="bold" />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="left"
+      android:text="Username"
+      android:textSize="20sp"
+      android:textStyle="bold"/>
 
   <com.google.android.material.textfield.TextInputLayout
       android:layout_width="match_parent"
@@ -23,12 +34,20 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/username"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="@string/username"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
   </com.google.android.material.textfield.TextInputLayout>
 
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="left"
+      android:text="Your Email"
+      android:textSize="20sp"
+      android:textStyle="bold"/>
   <com.google.android.material.textfield.TextInputLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
@@ -37,9 +56,18 @@
         android:id="@+id/email"
         android:layout_width="350dp"
         android:layout_height="48dp"
-        android:hint="@string/email"
-        android:padding="10dp" />
+        android:hint="example@iut-dhaka.edu"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
   </com.google.android.material.textfield.TextInputLayout>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="left"
+      android:text="Address"
+      android:textSize="20sp"
+      android:textStyle="bold"/>
 
   <com.google.android.material.textfield.TextInputLayout
       android:layout_width="match_parent"
@@ -50,8 +78,17 @@
         android:layout_width="350dp"
         android:layout_height="48dp"
         android:hint="@string/address"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
   </com.google.android.material.textfield.TextInputLayout>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="left"
+      android:text="Phone Number"
+      android:textSize="20sp"
+      android:textStyle="bold"/>
 
   <com.google.android.material.textfield.TextInputLayout
       android:layout_width="match_parent"
@@ -61,9 +98,19 @@
         android:id="@+id/PhoneNumber"
         android:layout_width="350dp"
         android:layout_height="48dp"
-        android:hint="@string/PhoneNumber"
-        android:padding="10dp" />
+        android:hint="+88018"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
   </com.google.android.material.textfield.TextInputLayout>
+
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="left"
+      android:text="Password"
+      android:textSize="20sp"
+      android:textStyle="bold"/>
 
   <com.google.android.material.textfield.TextInputLayout
       android:layout_width="match_parent"
@@ -78,6 +125,25 @@
         android:inputType="textPassword"/>
   </com.google.android.material.textfield.TextInputLayout>
 
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Register as Seller"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <CheckBox
+        android:id="@+id/register_as_seller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/primary_color"/>
+  </LinearLayout>
+
   <ProgressBar
       android:id="@+id/progressBar"
       android:layout_width="match_parent"
@@ -86,19 +152,39 @@
 
   <Button
       android:id="@+id/btn_register"
-      android:layout_width="200dp"
-      android:layout_height="50dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
       android:contentDescription="@string/register"
       android:text="@string/register"
-      android:textSize="20sp" />
-  <TextView
-      android:textStyle="bold"
       android:textSize="20sp"
-      android:gravity="center"
-      android:layout_marginTop="20dp"
-      android:id="@+id/loginNow"
-      android:text="@string/click_to_login"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+      android:paddingHorizontal="15dp"
+      android:paddingVertical="5dp"
+      android:layout_marginTop="6dp"
+      android:backgroundTint="@color/primary_color"/>
 
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center">
+    <TextView
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Already have an account?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/loginNow"
+        android:text=" Log in"
+        android:textColor="@color/primary_color"/>
+  </LinearLayout>
 </LinearLayout>
+</ScrollView>
