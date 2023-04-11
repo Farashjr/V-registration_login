@@ -17,7 +17,27 @@ public class Constants {
                 "Vegetables",
                 "others"
         };
+
+
     }
 
+    public static String productCategories1(int which) {
+        String[] productCategories1 = new String[]{
+                "All",
+                "Baking and cooking supplies",
+                "Beverages",
+                "Canned and jarred foods",
+                "Dairy products",
+                "Fruits",
+                "Grains and cereals",
+                "Meat and poultry",
+                "Seafood",
+                "Snacks and confectionery",
+                "Vegetables",
+                "others"
+        };
+        return productCategories1[which];
+    }
 }
+
 
